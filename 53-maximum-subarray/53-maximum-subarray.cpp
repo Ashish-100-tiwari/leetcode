@@ -3,7 +3,7 @@ public:
     int maxSubArray(vector<int>& nums) {
         int currsum=0;
         int maxsum=INT_MIN;
-        if(nums.size()==1){
+        if(nums.capacity()==1){
                 return nums.front();
             
         }else{
