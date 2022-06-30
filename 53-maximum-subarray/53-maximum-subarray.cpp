@@ -4,9 +4,9 @@ public:
         int currsum=0;
         int maxsum=INT_MIN;
         if(nums.size()==1){
-                maxsum= nums.front();
+                return nums.front();
             
-            }
+        }else{
         for(int i=0;i<nums.size();i++){
             currsum=currsum+nums[i];
             if(currsum>maxsum){
@@ -18,6 +18,7 @@ public:
             
         }
         return maxsum;
-        
+        }
     }
+        
 };
