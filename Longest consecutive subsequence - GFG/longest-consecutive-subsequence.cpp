@@ -6,27 +6,28 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
   public:
-    // arr[] : the input array
-    // N : size of the array arr[]
-    
-    //Function to return length of longest subsequence of consecutive integers.
+
     int findLongestConseqSubseq(int arr[], int N)
     {
-      //Your code here
-      sort(arr,arr+N);
-      int prev = arr[0];
-      int cur=1,ans=1;
-      for(int i=1;i<N;i++){
-          if(arr[i]==prev+1){
-              cur++;
-          }else if(arr[i]!=prev){
-              cur=1;
-              
-          }
-          prev=arr[i];
-          ans=max(cur,ans);
+      set<int>hashset;
+      for(int i =0;i<N;i++){
+          hashset.insert(arr[i]);
       }
-      return ans;
+      int longstack=0;
+      for(int i=0;i<N;i++){
+          
+          if(!hashset.count(arr[i]-1)){
+              int current=arr[i];
+              int currentstack=1;
+              while(hashset.count(current+1)){
+                  currentstack+=1;
+                  current+=1;
+              }
+              longstack=max(longstack,currentstack);
+          }
+          
+      }
+      return longstack;
     }
 };
 
